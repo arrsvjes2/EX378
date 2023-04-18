@@ -1,0 +1,5 @@
+# Implement method paymentMethod
+@Path("byPayMethod/{paymentMethod}")
+public List<Expense> queryBypaymentMethod(@PathParam("paymentMethod") String paymentMethod) { 
+
+}
