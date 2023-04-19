@@ -62,11 +62,21 @@ public class Expense {
 
     @JsonbCreator
     public static Expense of(String name, PaymentMethod paymentMethod, String amount, Long associateId) {
-
-        // TODO: Update regarding the new relationship
-        return new Expense(name, paymentMethod, amount, null);
+       return Associate.<Associate>findByIdOptional(associateId)
+          .map(associate -> new Expense(name, paymentMethod, amount, associate))
+          .orElseThrow(RuntimeException::new);
     }
 
-    // TODO: Add update() method
-
+    public static void update( final Expense expense ) {
+        Optional<Expense> previous = Expense.findByIdOptional( expense.id );
+        previous.ifPresentOrElse(( update ) -> {
+            update.uuid = expense.uuid;
+            update.name = expense.name;
+            update.amount = expense.amount;
+            update.paymentMethod = expense.paymentMethod;
+            update.persist();
+        }, () -> {
+            throw new WebApplicationException( Response.Status.NOT_FOUND );
+        });
+}
 }

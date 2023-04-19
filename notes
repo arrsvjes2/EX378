@@ -1,0 +1,10 @@
+# Implement method paymentMethod
+@Path("byPayMethod/{paymentMethod}")
+public List<Expense> queryBypaymentMethod(@PathParam("paymentMethod") int paymentMethod) { 
+
+}
+# Implement method queryBypaymentMethodCount 
+@Path("byPayMethod/{paymentMethod}/count")
+public long queryBypaymentMethodCount(@PathParam("paymentMethod") int paymentMethod) { 
+
+}
