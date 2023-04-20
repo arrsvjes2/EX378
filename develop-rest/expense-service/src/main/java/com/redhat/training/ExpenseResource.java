@@ -34,4 +34,15 @@ public class ExpenseResource {
     public void update(Expense expense) {
         expenseService.update(expense);
     }
+    // Configure method Path for url /expenses/query
+    // Add QueryPAram named from type int
+    // Add QueryParam named to type int
+    // Add QueryParam named orderBy type List<String>
+    public Response getUsers(int from, int to, List<String> orderBy) {
+
+            return Response
+                .status(200)
+                .entity("getUsers is called, from : " + from + ", to : " + to
+                    +  ", orderBy" + orderBy.toString()).build();
+    }
 }
