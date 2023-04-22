@@ -1,6 +1,8 @@
 package com.redhat.training;
 
 import javax.enterprise.context.ApplicationScoped;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
 
 @ApplicationScoped
 public class ExpenseValidator {
