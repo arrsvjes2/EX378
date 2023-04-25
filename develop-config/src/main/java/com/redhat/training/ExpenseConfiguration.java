@@ -2,6 +2,7 @@ package com.redhat.training;
 
 import io.smallrye.config.ConfigMapping;
 import io.smallrye.config.WithDefault;
+import java.util.Optional;
 
 public interface ExpenseConfiguration {
 
@@ -10,6 +11,8 @@ public interface ExpenseConfiguration {
 	  int rangeHigh();
 
 	   int rangeLow();
+	
+	  //Optional<String> debugMessage();
 
 }
 
