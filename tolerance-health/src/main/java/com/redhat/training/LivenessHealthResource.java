@@ -15,4 +15,11 @@ public class LivenessHealthResource {
 
     @Inject
     StateService applicationState;
+    
+    @Override
+    public HealthCheckResponse call() {
+        return applicationState.isAlive()
+            ? HealthCheckResponse.up(HEALTH_CHECK_NAME)
+            : HealthCheckResponse.down(HEALTH_CHECK_NAME);
+    }
 }
