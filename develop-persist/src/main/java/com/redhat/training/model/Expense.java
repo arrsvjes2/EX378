@@ -55,6 +55,7 @@ public class Expense {
         this.amount = new BigDecimal(amount);
         this.associate = associate;
         // TODO: Add associateId association
+        this.associateId = associate.id;
     }
 
     public Expense(String name, PaymentMethod paymentMethod, String amount, Associate associate) {
