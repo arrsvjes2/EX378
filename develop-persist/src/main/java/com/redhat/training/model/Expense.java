@@ -20,7 +20,6 @@ import javax.ws.rs.core.Response;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import org.hibernate.annotations.Type;
 
-// TODO: Add @Entity annotation and extend PanacheEntity
 public class Expense {
 
     public enum PaymentMethod {
@@ -37,13 +36,15 @@ public class Expense {
     public PaymentMethod paymentMethod;
     public BigDecimal amount;
 
-    // TODO: Add many-to-one relationship between expense and associate
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JsonbTransient
+    @JoinColumn(name = "associate_id", insertable = false, updatable = false)
     public Associate associate;
 
-     // TODO: Annotate the associateId with @Column
+    @Column(name = "associate_id")
     public Long associateId;
 
-    // TODO: Add a default constructor
+    public Expense() { }
 
     public Expense(UUID uuid, String name, LocalDateTime creationDate,
             PaymentMethod paymentMethod, String amount, Associate associate) {

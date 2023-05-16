@@ -17,9 +17,11 @@ public class Associate {
     public String name;
 
     // TODO: Add one to many relationship between associate and expenses
+    @JsonbTransient
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "associate")
     public List<Expense> expenses = new ArrayList<>();
 
-    // TODO: Add a default constructor
+    public Associate() { }
 
     public Associate(String name) {
         this.name = name;
